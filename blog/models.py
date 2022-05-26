@@ -15,8 +15,8 @@ class Post(models.Model):
    status = models.CharField(max_length=20, choices=STATUS, default='draft')
 
    class Meta:
-      ordering = ('-published_at',)
+      ordering = ('-published_at',)#irá mostrar os mais recentes antes
 
    def __str__(self):
-      return "{} - {}".format(self.title, self.published_at)
+      return "{} - {}".format(self.title, self.published_at) #irá ser sobreescrito pela class PostAdmin em admin.py
 
