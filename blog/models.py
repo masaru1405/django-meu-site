@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 STATUS = [('draft', 'Draft'), ('published', 'Published')]
 
@@ -27,7 +28,9 @@ class Post(models.Model):
    #Poderíamos fazer: Post.objects.all().filter(status='published')
    published = PublishedManager()
 
-   
+   #Vídeo 2h51m
+   def get_absolute_url(self):
+      return reverse('post.detail', args=[self.slug])
 
    class Meta:
       ordering = ('-published_at',)#irá mostrar os mais recentes antes
