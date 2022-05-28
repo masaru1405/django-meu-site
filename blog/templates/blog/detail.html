@@ -3,6 +3,17 @@
 {% block title %}Detalhe{% endblock %}
 
 {% block content %}
+   <!--vídeo 3h37m-->
+   <ul>
+      {% for message in messages %}
+         {% if message.tags %}
+            <li>
+               {{message}}
+            </li>
+         {% endif %}
+      {% endfor %}
+   </ul>
+
    <h1>{{post.title}}</h1>
    <p>{{post.content}}</p>
 
