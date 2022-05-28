@@ -7,4 +7,5 @@
    <p>{{post.content}}</p>
 
    <a href="{% url 'post.edit' post.slug  %}">Edit</a>
+   <a href="{% url 'post.delete' post.slug %}">Delete</a>
 {% endblock %}
