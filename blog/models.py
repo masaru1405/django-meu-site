@@ -3,6 +3,11 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+#video 3h50
+from django.utils.text import slugify
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 STATUS = [('draft', 'Draft'), ('published', 'Published')]
 
 class PublishedManager(models.Manager):
@@ -38,6 +43,11 @@ class Post(models.Model):
    def __str__(self):
       return "{} - {}".format(self.title, self.published_at) #irá ser sobreescrito pela class PostAdmin em admin.py
 
-
-
+#video 3h50
+@receiver(post_save, sender=Post)
+def insert_slug(sender, instance, **kwargs):
+   #se false, ou seja, não tem slug
+   if not instance.slug: 
+      instance.slug = slugify(instance.title)
+      return instance.save() 
 
