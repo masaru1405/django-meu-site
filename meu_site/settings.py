@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     #apps
     'blog',
     'accounts',
+
+    #thirdy-apps
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [

@@ -14,6 +14,10 @@ header h1 a{
    text-decoration: none;
 }
 
+a {
+   text-decoration: none;
+}
+
 .nav-left{
    margin-right: auto;
 }

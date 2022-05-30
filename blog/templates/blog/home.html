@@ -15,10 +15,22 @@
    </ul>
 
    {% for post in posts %}
-      <div class="post-entry">
-         <!--<h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>-->
-         <h2><a href="{% url 'post.detail' post.slug %}">{{post.title}}</a></h2>
-         <p>{{post.content}}</p>
-      </div>
+      <!-- Post preview-->
+      <div class="post-preview">
+         <a href="{% url 'post.detail' post.slug %}">
+             <h2 class="post-title">{{post.title}}</h2>
+             <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+         </a>
+         <p class="post-meta">
+             Posted by
+             <a href="#!">Start Bootstrap</a>
+             on September 24, 2022
+         </p>
+     </div>
+     <!-- Divider-->
+     <hr class="my-4" />
+
    {% endfor %}
+   <!-- Pager-->
+   <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
 {% endblock %}
