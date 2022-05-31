@@ -15,7 +15,7 @@
    </ul>
 
    <h1>{{post.title}}</h1>
-   <p>{{post.content}}</p>
+   <p>{{post.content|safe}}</p> <!--6h59m-->
 
    <a href="{% url 'post.edit' post.slug  %}">Edit</a>
    <a href="{% url 'post.delete' post.slug %}">Delete</a>

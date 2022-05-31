@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Category
 
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
    list_display = ('title', 'author', 'published_at', 'status')
    list_filter = ('author', 'status', 'created_at', 'published_at')
@@ -9,4 +10,11 @@ class PostAdmin(admin.ModelAdmin):
    search_fields = ('title', 'content')
    prepopulated_fields = {'slug':('title',)} #ao digita o title no painel admin, já preenche o campo slug
 
-admin.site.register(Post, PostAdmin)
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+   list_display = ('category_type',)
+   list_filter = ('category_type',)
+   date_hierarchy = 'published_at'
+   search_fields = ('category_type',)
+
+#admin.site.register(Post, PostAdmin, Category, CategoryAdmin)

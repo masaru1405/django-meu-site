@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     #thirdy-apps
     'bootstrapform',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
