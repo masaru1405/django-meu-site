@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Post
+from .forms import PostForm
 
 class BlogListView(ListView):
    model = Post
@@ -32,8 +33,9 @@ class BlogCreateView(SuccessMessageMixin, CreateView):
 
 class BlogUpdateView(SuccessMessageMixin, UpdateView):
    model = Post
+   form_class = PostForm
    template_name = 'blog/edit.html'
-   fields = ['title', 'content']
+   #fields = ['title', 'content']
    success_message = "%(field)s alterado com sucesso!" #field neste caso será o atributo 'title', ver abaixo
 
    def get_success_message(self, cleaned_data):
