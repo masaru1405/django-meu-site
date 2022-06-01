@@ -19,10 +19,19 @@ class BlogDetailView(DetailView):
 #video 2h52m
 class BlogCreateView(SuccessMessageMixin, CreateView):
    model = Post
+   form_class = PostForm
    template_name = 'blog/new.html'
    #fields = '__all__'
-   fields = ['title', 'content', 'author']
+   #fields = ['title', 'content', 'author']
    success_message = "%(field)s criado com sucesso!"
+
+   #video 6h14
+   #author será o user logado
+   def form_valid(self, form):
+      obj = form.save(commit=False)
+      obj.author = self.request.user
+      obj.save()
+      return super().form_valid(form)
    
    #video 3h37
    def get_success_message(self, cleaned_data):
@@ -37,6 +46,14 @@ class BlogUpdateView(SuccessMessageMixin, UpdateView):
    template_name = 'blog/edit.html'
    #fields = ['title', 'content']
    success_message = "%(field)s alterado com sucesso!" #field neste caso será o atributo 'title', ver abaixo
+
+   #video 6h14
+   #author será o user logado
+   def form_valid(self, form):
+      obj = form.save(commit=False)
+      obj.author = self.request.user
+      obj.save()
+      return super().form_valid(form)
 
    def get_success_message(self, cleaned_data):
       return self.success_message % dict(

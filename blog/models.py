@@ -11,6 +11,9 @@ from django.dispatch import receiver
 #video 5h55
 from ckeditor.fields import RichTextField
 
+#video 6h19m
+from django.utils.html import mark_safe
+
 STATUS = [('draft', 'Draft'), ('published', 'Published')]
 
 class PublishedManager(models.Manager):
@@ -61,6 +64,13 @@ class Post(models.Model):
 
    def __str__(self):
       return "{} - {}".format(self.title, self.published_at) #irá ser sobreescrito pela class PostAdmin em admin.py
+   
+   #video 6h19m
+   #para mostrar a imagem no painel do admin e não somente a url da imagem; (precisa ser chamado no admin.py)
+   @property
+   def view_image(self):
+      return mark_safe('<img src="%s" width="400px" />'%self.images.url)
+      view_image.allow_tags = True
 
 #video 3h50
 @receiver(post_save, sender=Post)

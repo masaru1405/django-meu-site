@@ -9,6 +9,13 @@ class PostAdmin(admin.ModelAdmin):
    date_hierarchy = 'published_at' #irá mostrar uma navegação com as datas
    search_fields = ('title', 'content')
    prepopulated_fields = {'slug':('title',)} #ao digita o title no painel admin, já preenche o campo slug
+   readonly_fields = ('show_image',) #6h25m
+
+   #6h25m
+   #para mudar o label da propriedade 'view_image' no admin
+   def show_image(self, obj):
+      return obj.view_image
+   show_image.short_description = "Imagem cadastrada"
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
