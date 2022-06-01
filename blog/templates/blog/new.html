@@ -4,13 +4,13 @@
 {% block title%}New Post{% endblock %}
 
 {% block content %}
-   <h2>NEW POST</h2>
+   <h2>NOVO POST</h2>
    <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="mb-3">
          {{form|bootstrap}}
       </div>
-      <button type="submit" class="btn btn-primary">Save</button>  
+      <button type="submit" class="btn btn-primary">SALVAR &#128516;</button>  
    </form>
    <br>
 {% endblock %}

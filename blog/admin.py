@@ -15,7 +15,7 @@ class PostAdmin(admin.ModelAdmin):
    #para mudar o label da propriedade 'view_image' no admin
    def show_image(self, obj):
       return obj.view_image
-   show_image.short_description = "Imagem cadastrada"
+   show_image.short_description = "Imagem de fundo"
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

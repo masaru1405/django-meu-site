@@ -17,6 +17,12 @@
    <h1>{{post.title}}</h1>
    <p>{{post.content|safe}}</p> <!--6h59m-->
 
-   <a href="{% url 'post.edit' post.slug  %}">Edit</a>
-   <a href="{% url 'post.delete' post.slug %}">Delete</a>
+   {% if request.user.is_authenticated %}
+      <div >  
+         <a href="{% url 'post.delete' post.slug %}" class="btn btn-danger">Deletar &#128556;</a>
+         <a href="{% url 'post.edit' post.slug  %}" class="btn btn-primary">Editar &#128513;</a>
+      </div>
+      <br>
+   {% endif %}
+   
 {% endblock %}

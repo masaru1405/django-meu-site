@@ -6,6 +6,9 @@ from django.contrib.messages.views import SuccessMessageMixin
 from .models import Post
 from .forms import PostForm
 
+#6h46m
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 class BlogListView(ListView):
    model = Post
    template_name = 'blog/home.html'
@@ -17,7 +20,7 @@ class BlogDetailView(DetailView):
    context_object_name = 'post'
 
 #video 2h52m
-class BlogCreateView(SuccessMessageMixin, CreateView):
+class BlogCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
    model = Post
    form_class = PostForm
    template_name = 'blog/new.html'
@@ -40,7 +43,9 @@ class BlogCreateView(SuccessMessageMixin, CreateView):
          field=self.object.title,
       )
 
-class BlogUpdateView(SuccessMessageMixin, UpdateView):
+#OBS: neste caso não precisamos especificar a url da tela de login, pois estamos usando o login.html do Django ?
+#ou seja, o 'User' padrão 
+class BlogUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
    model = Post
    form_class = PostForm
    template_name = 'blog/edit.html'
@@ -61,7 +66,7 @@ class BlogUpdateView(SuccessMessageMixin, UpdateView):
          field=self.object.title,
       )
 
-class BlogDeleteView(SuccessMessageMixin, DeleteView):
+class BlogDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
    model = Post
    template_name = 'blog/delete.html'
    context_object_name = 'post'
