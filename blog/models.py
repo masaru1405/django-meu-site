@@ -45,7 +45,7 @@ class Post(models.Model):
    modified_at = models.DateTimeField(auto_now=True)#campo oculto
    status = models.CharField(max_length=20, choices=STATUS, default='draft')
    category = models.ManyToManyField(Category, related_name="get_posts")
-   images = models.ImageField(upload_to="blog", null=True, blank=True)
+   background_image = models.ImageField(upload_to="blog", null=True, blank=True)
 
    ###Opcional###
    #Sem essa linha, só irá mostar os posts com status='published', por causa da linha 28 (ver vídeo: 2h:07)
@@ -69,7 +69,7 @@ class Post(models.Model):
    #para mostrar a imagem no painel do admin e não somente a url da imagem; (precisa ser chamado no admin.py)
    @property
    def view_image(self):
-      return mark_safe('<img src="%s" width="400px" />'%self.images.url)
+      return mark_safe('<img src="%s" width="400px" />'%self.background_image.url)
       view_image.allow_tags = True
 
 #video 3h50
