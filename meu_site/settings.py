@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #apps
     'blog',
     'accounts',
+    'social',
 
     #thirdy-apps
     'bootstrapform',
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.processors.context_social',
             ],
         },
     },
