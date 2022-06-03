@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}
+   <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})">
+      <div class="container position-relative px-4 px-lg-5">
+         <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                  <div class="page-heading">
+                     <h1>Contact Me</h1>
+                     <span class="subheading">Have questions? I have answers.</span>
+                  </div>
+            </div>
+         </div>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <div class="my-5">
+      <p>Preencha o formulário abaixo e logo entraremos em contato!</p>
+     <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{form|bootstrap}}
+        </div>
+        <button type="submit" class="btn btn-primary">ENVIAR &#128516;</button>  
+     </form>
+     {% if send %}
+         <div id="success">
+            Mensagem enviada com sucesso!
+         </div>
+     {% endif %}
+   </div>
+{% endblock %}
+

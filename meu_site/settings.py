@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'blog',
     'accounts',
     'social',
+    'contact',
 
     #thirdy-apps
     'bootstrapform',
