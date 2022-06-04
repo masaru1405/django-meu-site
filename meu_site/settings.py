@@ -148,3 +148,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_REDIRECT_URL = 'blog.home'
 LOGOUT_REDIRECT_URL = 'blog.home'
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '5e1587e9d2756b'
+EMAIL_HOST_PASSWORD = '1cfc42e2596ba0'
+EMAIL_PORT = '2525'
+
+#08h02
+#irá mostrar no console o email enviado 
+#obs: para usar o mailtrap.io (ver site), é necessário comentar a linha abaixo
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

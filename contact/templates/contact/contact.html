@@ -22,16 +22,20 @@
 {% block content %}
    <div class="my-5">
       <p>Preencha o formulário abaixo e logo entraremos em contato!</p>
-     <form method="POST">
+     <form method="POST" action="{% url 'contact' %}">
         {% csrf_token %}
         <div class="mb-3">
             {{form|bootstrap}}
         </div>
         <button type="submit" class="btn btn-primary">ENVIAR &#128516;</button>  
      </form>
-     {% if send %}
-         <div id="success">
+     {% if success %} <!--'success' foi definido no context em views.py-->
+         <div>
             Mensagem enviada com sucesso!
+         </div>
+      {% else %}
+         <div>
+            Erro ao enviar seu e-mail
          </div>
      {% endif %}
    </div>
